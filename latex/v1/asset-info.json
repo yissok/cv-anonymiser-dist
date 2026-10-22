@@ -1,12 +1,12 @@
 {
   "upstreamRevision": "f80f84659c9476e41ef7212f6d753e10f6bd4af5",
-  "files": 811,
+  "files": 823,
   "bytes": {
     "swiftlatexpdftex.js": 83934,
     "swiftlatexpdftex.wasm": 1772266,
-    "tex-files.bin": 15387242
+    "tex-files.bin": 15398242
   },
-  "totalBytes": 17243442,
+  "totalBytes": 17254442,
   "sourceHashes": {
     "public/vendor/swiftlatex.LICENSE.txt": "8769eae962efdea9a0a0b60505c54d3c5eb7b2ad501d0b86985ee44115bb7fae",
     "public/vendor/swiftlatexpdftex.js": "68382c85fc4d5b7b3c2f95b3b6e9eef15e1c7edf21563dbdc1e6f2170ccb79ee",
@@ -18,6 +18,7 @@
     "cv-xkeyval.tar.xz": "e665b5e6c77b804d4a9a96de18a1de7baff4ac6152475a7c1c54c44662c8d37b",
     "cv-iftex.tar.xz": "788ebd2d0a58946b0aa80801c9034d456c6647312d7fbf5d46d6e04885ef8eca",
     "cv-everysel.tar.xz": "35c04613080faab79bf9776d60f0e996ff7de6e70c9ec588d6df8c0013534297",
+    "cv-cmap.tar.xz": "f466a409f749994137c99843dd20c1b79a45c51c2ad5f75b5378bab963ad477b",
     "cv-carlito-doc.tar.xz": "553e37dca9db3cdfc704d284a0547819c2943f1d3e2898377a3a98e46debc1fd"
   }
 }

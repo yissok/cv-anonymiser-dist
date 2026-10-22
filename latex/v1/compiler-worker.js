@@ -1,5 +1,5 @@
 // Only static compiler assets are cached. CV source and PDFs stay in memory.
-const CACHE = 'cv-anonymiser-latex-v1-r2';
+const CACHE = 'cv-anonymiser-latex-v1-r3-cmap';
 
 async function asset(name) {
   const url = new URL(name, self.__cvAssetBase || self.location.href).href;

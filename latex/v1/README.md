@@ -14,7 +14,7 @@ disable network/bitmap-font lookups and omit the unconditional BibTeX invocation
 for this single-file editor. The source remains in swiftlatexpdftex.js.
 
 Additional TeX Live 2020 final packages: carlito, ragged2e, needspace, fontaxes,
-xkeyval, iftex, everysel, from https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2020/tlnet-final/archive/.
+xkeyval, iftex, everysel, cmap (including its character mapping resources), from https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2020/tlnet-final/archive/.
 Their metadata and license declarations are retained in texlive-package-notices.txt;
 TeX source files keep their original copyright/license headers. Carlito fonts use
 the SIL Open Font License (carlito.LICENSE.txt); their LaTeX support files use the LPPL (see carlito.README.txt). Other bundled
@@ -29,5 +29,7 @@ no archive library is needed. The font map is trimmed to bundled fonts.
 
 scripts/prepare-latex-assets.py rebuilds the assets from existing upstream archives
 without network access. asset-info.json records input hashes and exact output sizes.
-When updating assets, increment the v1 directory and the worker's cache name so
-cached files from different compiler versions cannot mix.
+When updating bundled files, change the worker's cache name so the development
+server cannot reuse an older cached bundle. Production release URLs are also
+versioned by the static publisher. Increment the v1 directory for incompatible
+worker protocols or bundle formats.
