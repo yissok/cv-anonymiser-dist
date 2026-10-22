@@ -1,17 +1,17 @@
 {
   "upstreamRevision": "f80f84659c9476e41ef7212f6d753e10f6bd4af5",
-  "files": 823,
+  "files": 1530,
   "bytes": {
     "swiftlatexpdftex.js": 83934,
     "swiftlatexpdftex.wasm": 1772266,
-    "tex-files.bin": 15398242
+    "tex-files.bin": 15729554
   },
   "sha256": {
     "swiftlatexpdftex.js": "1b89a17c1a31237d81c9e4d12e386182daebe82c4b1288c2a61eb76e8148de0a",
     "swiftlatexpdftex.wasm": "a2847460f4c55e623e2ccd4898ee629596a1ce121395eeda1cfbdf7a94893c62",
-    "tex-files.bin": "3af021af54a0041ec632908ecaa1ccec7346fb606716e5d01c990fa34f9a8be0"
+    "tex-files.bin": "9196a53bc5fbb683c3417d73122613780bc4d4d6a42edc237989b7229117a9f4"
   },
-  "totalBytes": 17254442,
+  "totalBytes": 17585754,
   "sourceHashes": {
     "public/vendor/swiftlatex.LICENSE.txt": "8769eae962efdea9a0a0b60505c54d3c5eb7b2ad501d0b86985ee44115bb7fae",
     "public/vendor/swiftlatexpdftex.js": "68382c85fc4d5b7b3c2f95b3b6e9eef15e1c7edf21563dbdc1e6f2170ccb79ee",
@@ -24,6 +24,10 @@
     "cv-iftex.tar.xz": "788ebd2d0a58946b0aa80801c9034d456c6647312d7fbf5d46d6e04885ef8eca",
     "cv-everysel.tar.xz": "35c04613080faab79bf9776d60f0e996ff7de6e70c9ec588d6df8c0013534297",
     "cv-cmap.tar.xz": "f466a409f749994137c99843dd20c1b79a45c51c2ad5f75b5378bab963ad477b",
+    "cv-babel.tar.xz": "9eca2d7ebae8096a26198eddaeff053198a37bcc9e87980a5f33c0c7123614df",
+    "cv-babel-english.tar.xz": "9e22f853a3e4dc389742e9351a6b685527bce559e9dd68b86c4ae5a916614bbe",
+    "cv-hyphenat.tar.xz": "955aae315f3bdd2e42b2402e68b7fab3d8331b1cb4d8f5a2a8be737a192a195f",
+    "cv-pdftex.tar.xz": "24f98bbff1c300abe6d24dcca26b5cfad8d2103948c112a084ebd6a8289a3e7e",
     "cv-carlito-doc.tar.xz": "553e37dca9db3cdfc704d284a0547819c2943f1d3e2898377a3a98e46debc1fd"
   }
 }

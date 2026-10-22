@@ -22,7 +22,9 @@ disable network/bitmap-font lookups and omit the unconditional BibTeX invocation
 for this single-file editor. The source remains in swiftlatexpdftex.js.
 
 Additional TeX Live 2020 final packages: carlito, ragged2e, needspace, fontaxes,
-xkeyval, iftex, everysel, cmap (including its character mapping resources), from https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2020/tlnet-final/archive/.
+xkeyval, iftex, everysel, cmap (including its character mapping resources), babel,
+babel-english (including British English), hyphenat and pdftex (including
+glyphtounicode), from https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/2020/tlnet-final/archive/.
 Their metadata and license declarations are retained in texlive-package-notices.txt;
 TeX source files keep their original copyright/license headers. Carlito fonts use
 the SIL Open Font License (carlito.LICENSE.txt); their LaTeX support files use the LPPL (see carlito.README.txt). Other bundled
