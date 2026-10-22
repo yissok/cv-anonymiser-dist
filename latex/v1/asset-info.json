@@ -6,6 +6,11 @@
     "swiftlatexpdftex.wasm": 1772266,
     "tex-files.bin": 15398242
   },
+  "sha256": {
+    "swiftlatexpdftex.js": "1b89a17c1a31237d81c9e4d12e386182daebe82c4b1288c2a61eb76e8148de0a",
+    "swiftlatexpdftex.wasm": "a2847460f4c55e623e2ccd4898ee629596a1ce121395eeda1cfbdf7a94893c62",
+    "tex-files.bin": "3af021af54a0041ec632908ecaa1ccec7346fb606716e5d01c990fa34f9a8be0"
+  },
   "totalBytes": 17254442,
   "sourceHashes": {
     "public/vendor/swiftlatex.LICENSE.txt": "8769eae962efdea9a0a0b60505c54d3c5eb7b2ad501d0b86985ee44115bb7fae",
