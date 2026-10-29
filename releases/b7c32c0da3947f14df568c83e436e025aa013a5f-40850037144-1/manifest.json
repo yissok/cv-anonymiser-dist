@@ -1,0 +1,26 @@
+{
+  "version": 4,
+  "assets": "https://yissok.github.io/cv-anonymiser-dist/releases/b7c32c0da3947f14df568c83e436e025aa013a5f-40850037144-1",
+  "app": "cv-anonymiser",
+  "global": "__sveltekit_1j41te",
+  "start": "_app/immutable/entry/start.hx3_U5Ga.js",
+  "appEntry": "_app/immutable/entry/app.DsngB_cj.js",
+  "styles": [],
+  "scripts": [],
+  "preloads": [
+    "https://yissok.github.io/cv-anonymiser-dist/releases/b7c32c0da3947f14df568c83e436e025aa013a5f-40850037144-1/_app/immutable/entry/start.hx3_U5Ga.js",
+    "https://yissok.github.io/cv-anonymiser-dist/releases/b7c32c0da3947f14df568c83e436e025aa013a5f-40850037144-1/_app/immutable/chunks/BypBI6IQ.js",
+    "https://yissok.github.io/cv-anonymiser-dist/releases/b7c32c0da3947f14df568c83e436e025aa013a5f-40850037144-1/_app/immutable/chunks/Ckb5o-V7.js",
+    "https://yissok.github.io/cv-anonymiser-dist/releases/b7c32c0da3947f14df568c83e436e025aa013a5f-40850037144-1/_app/immutable/chunks/8XkwILde.js",
+    "https://yissok.github.io/cv-anonymiser-dist/releases/b7c32c0da3947f14df568c83e436e025aa013a5f-40850037144-1/_app/immutable/entry/app.DsngB_cj.js",
+    "https://yissok.github.io/cv-anonymiser-dist/releases/b7c32c0da3947f14df568c83e436e025aa013a5f-40850037144-1/_app/immutable/chunks/Bw0c3dZs.js",
+    "https://yissok.github.io/cv-anonymiser-dist/releases/b7c32c0da3947f14df568c83e436e025aa013a5f-40850037144-1/_app/immutable/chunks/BfRmXTfs.js",
+    "https://yissok.github.io/cv-anonymiser-dist/releases/b7c32c0da3947f14df568c83e436e025aa013a5f-40850037144-1/_app/immutable/chunks/CVhFLoBW.js",
+    "https://yissok.github.io/cv-anonymiser-dist/releases/b7c32c0da3947f14df568c83e436e025aa013a5f-40850037144-1/_app/immutable/chunks/B5noslln.js",
+    "https://yissok.github.io/cv-anonymiser-dist/releases/b7c32c0da3947f14df568c83e436e025aa013a5f-40850037144-1/_app/immutable/nodes/0.MpxKtAVP.js"
+  ],
+  "social": {
+    "title": "Cv Anonymiser",
+    "description": "An interactive website created with Project Factory."
+  }
+}
