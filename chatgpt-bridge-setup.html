@@ -12,11 +12,12 @@
 <body>
   <h1>Set up ChatGPT Browser Bridge</h1>
   <p>Connect this app to your signed-in ChatGPT browser session once. Then paste a job description and choose <strong>Tailor CV with ChatGPT</strong>.</p>
+  <p><a href="./?setup=1">Open the setup wizard</a> to download both extensions and check this computer. Or <a href="downloads/chatgpt-browser-bridge.zip" download>download the ChatGPT extension ZIP</a> directly.</p>
   <h2>Install the extension</h2>
   <ol>
-    <li>Open <code>chrome://extensions</code>, <code>brave://extensions</code> or <code>edge://extensions</code> in your desktop browser.</li>
-    <li>Enable <strong>Developer mode</strong> and choose <strong>Load unpacked</strong>.</li>
-    <li>Select the <strong>extension</strong> folder in your separate <code>chatgpt-browser-bridge</code> repository. On Andrea’s Mac it is <code>/Users/andrea/Documents/GIT/chatgpt-browser-bridge/extension</code>. No build or local server is required.</li>
+    <li>Extract the downloaded ZIP and move the <code>chatgpt-browser-bridge</code> folder somewhere permanent. No checkout, build or local server is required.</li>
+    <li>Open <code>chrome://extensions</code>, <code>brave://extensions</code> or <code>edge://extensions</code> in your desktop browser. Enable <strong>Developer mode</strong> and choose <strong>Load unpacked</strong>.</li>
+    <li>Select the extracted folder containing <code>manifest.json</code>. Keep it in place while installed.</li>
     <li>Open <a href="https://chatgpt.com/" target="_blank" rel="noreferrer">ChatGPT</a> and sign in in the same browser profile.</li>
     <li>Reload CV Anonymiser. The tailoring panel should show <strong>Browser extension connected</strong>; use <strong>Check</strong> to retry.</li>
   </ol>
