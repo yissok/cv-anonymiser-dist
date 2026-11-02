@@ -25,7 +25,7 @@ self.addEventListener('fetch', (event) => {
     return new Response(event.request.method === 'HEAD' ? null : document.blob, { headers: {
       'Content-Type': 'application/pdf',
       'Content-Length': String(document.blob.size),
-      'Content-Disposition': `inline; filename="${fallback}"; filename*=UTF-8''${encoded}`,
+      'Content-Disposition': `${url.searchParams.get('download') === '1' ? 'attachment' : 'inline'}; filename="${fallback}"; filename*=UTF-8''${encoded}`,
       'Cache-Control': 'no-store',
       'X-Content-Type-Options': 'nosniff',
     } });
