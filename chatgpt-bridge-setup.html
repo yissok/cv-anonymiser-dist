@@ -13,7 +13,11 @@
   <h1>Set up ChatGPT Browser Bridge</h1>
   <p>Connect this app to your signed-in ChatGPT browser session once. Then paste a job description and choose <strong>Tailor CV with ChatGPT</strong>.</p>
   <p><a href="./?setup=1">Open the setup wizard</a> to download both extensions and check this computer. Or <a href="downloads/chatgpt-browser-bridge.zip" download>download the ChatGPT extension ZIP</a> directly.</p>
-  <h2>Install the extension</h2>
+  <h2>Firefox 140 or newer</h2>
+  <p><a href="downloads/chatgpt-browser-bridge-firefox.zip" download>Download Firefox bridge ZIP</a>. This is a testing build. A permanent Mozilla-signed release has not yet been published.</p>
+  <ol><li>Open <code>about:debugging#/runtime/this-firefox</code> in desktop Firefox.</li><li>Choose <strong>Load Temporary Add-on</strong> and select the downloaded ZIP, or extract it and select <code>manifest.json</code>.</li><li>In the add-on’s permissions, allow access to ChatGPT and the CV app. Sign in to ChatGPT in the same Firefox profile, reload the CV app and check its extension connection.</li><li>After restarting Firefox, load the testing add-on again. Permanent installation requires Mozilla signing; keep Firefox’s signature checks enabled.</li></ol>
+  <p>Firefox uses the same automatic master creation, advice and tailoring flow. The separate Google connection extension is still Chromium-only; local CV storage works without it.</p>
+  <h2>Install in Chrome, Edge or Brave</h2>
   <ol>
     <li>Extract the downloaded ZIP and move the <code>chatgpt-browser-bridge</code> folder somewhere permanent. No checkout, build or local server is required.</li>
     <li>Open <code>chrome://extensions</code>, <code>brave://extensions</code> or <code>edge://extensions</code> in your desktop browser. Enable <strong>Developer mode</strong> and choose <strong>Load unpacked</strong>.</li>
