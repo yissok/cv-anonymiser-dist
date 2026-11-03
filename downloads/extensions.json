@@ -12,12 +12,12 @@
     {
       "id": "chatgpt-browser-bridge",
       "name": "ChatGPT Browser Bridge",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "file": "chatgpt-browser-bridge.zip",
-      "sha256": "ce0f6a2e092a4d77a341be9f11697ffa36db8571e0d17ca2a601d4e6f3062291",
-      "bytes": 29156,
+      "sha256": "61296cde35edf6f739a56f44dedfde692ded5bba8f78f135379bca693d24ad53",
+      "bytes": 29204,
       "repository": "https://github.com/yissok/chatgpt-browser-bridge",
-      "revision": "4c49ba835a4d57e3aebb5057fbf0529afc986278"
+      "revision": "ae1b376f5c23c79a10d697c971ca7a41f1b9a7ec"
     }
   ]
 }
