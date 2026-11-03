@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Set up CV Google Connection — CV Anonymiser</title>
+  <style>
+    :root{color-scheme:light dark;font-family:system-ui,sans-serif;line-height:1.7;background:light-dark(#f7f8fa,#11151c);color:light-dark(#222a35,#e1e7ef)}body{max-width:760px;margin:50px auto;padding:0 24px 60px}h1{font-size:30px;line-height:1.3}h2{font-size:20px;margin-top:32px}li{margin:12px 0}code{font-size:.9em;overflow-wrap:anywhere}a{color:light-dark(#2154a0,#8ab9ff);text-underline-offset:3px}a:focus-visible{outline:2px solid currentColor;outline-offset:3px}strong{font-weight:650}
+  </style>
+</head>
+<body>
+  <h1>Set up CV Google Connection</h1>
+  <p><a href="./?setup=1">Open the setup wizard</a> to install both extensions, or <a href="downloads/cv-google-connection.zip" download>download the Google extension ZIP</a> directly.</p>
+  <h2>Install on this computer</h2>
+  <ol>
+    <li>Use desktop Brave or Chrome. Extract the ZIP and move its <code>cv-google-connection</code> folder somewhere permanent.</li>
+    <li>Open <code>brave://extensions</code> or <code>chrome://extensions</code> in the address bar. Enable <strong>Developer mode</strong>, choose <strong>Load unpacked</strong> and select the folder containing <code>manifest.json</code>. Keep that folder in place.</li>
+    <li>Reload the CV app. Choose <strong>Open Google connection</strong> in the wizard, then <strong>Connect with extension</strong>. Sign in using the Google account that owns the linked CV library.</li>
+    <li>If this account needs its initial selected-file grant, choose <strong>Choose linked Sheet</strong>. That grant uses the restricted Picker key supplied by the app owner. Existing grants do not require a new key on each device.</li>
+  </ol>
+  <p>The download includes the existing public Chrome OAuth client and stable ID <code>dajllfhbcmcpppiiilbgfkjllggnakdi</code>. It contains no account tokens or client secret. Installing in another profile requires its own initial authorization.</p>
+  <h2>Brave reports a redirect mismatch</h2>
+  <p>The app owner must add this exact <strong>Authorized redirect URI</strong>, including the final slash, on the existing <strong>Web application</strong> OAuth client in <a href="https://console.cloud.google.com/apis/credentials?project=404244741287" target="_blank" rel="noreferrer">Google Cloud credentials</a>:</p>
+  <p><code>https://dajllfhbcmcpppiiilbgfkjllggnakdi.chromiumapp.org/</code></p>
+  <p>The web client is <code>404244741287-91ji1m1cj0iv9psu1d3c5ngt8eoog5ij.apps.googleusercontent.com</code>. Preserve its existing origins and redirects. This is a one-time project setting shared across computers. No server runs at the callback address.</p>
+  <h2>Reconnect or update</h2>
+  <p>If Google needs renewed sign-in, choose <strong>Reconnect Google</strong> or <strong>Connect with extension</strong>. Brave’s silent renewal depends on the Google session in that profile. Closing the browser, revoked access or account policy can require you to reconnect.</p>
+  <p>For an extension update, replace the files in its installed folder with the new ZIP’s files, reload the extension on the extensions page, then reload the CV app. If detection fails, check that both the app and extension use this browser profile.</p>
+  <p>Installation follows Chrome’s <a href="https://developer.chrome.com/docs/extensions/get-started/tutorial/hello-world#load-unpacked" target="_blank" rel="noreferrer">unpacked extension instructions</a>.</p>
+</body>
+</html>
