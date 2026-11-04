@@ -12,22 +12,22 @@
     {
       "id": "chatgpt-browser-bridge-firefox",
       "name": "ChatGPT Browser Bridge",
-      "version": "0.1.2",
+      "version": "0.1.3",
       "file": "chatgpt-browser-bridge-firefox.zip",
-      "sha256": "515e8eb5855c77febe2b8b59f7b8551244b1ebba78b4bae1bc8f8ac6d4b8c56d",
-      "bytes": 29155,
+      "sha256": "a10cadd582ba541e3bcad3600b5506916122136fe9b1207a72b4a09e95c5125b",
+      "bytes": 29697,
       "repository": "https://github.com/yissok/chatgpt-browser-bridge",
-      "revision": "72b250d4dee0501f1043fc369df2f41e367b6a83"
+      "revision": "a628e5a75362616cebe0780689a5a60c96f88375"
     },
     {
       "id": "chatgpt-browser-bridge",
       "name": "ChatGPT Browser Bridge",
-      "version": "0.1.2",
+      "version": "0.1.3",
       "file": "chatgpt-browser-bridge.zip",
-      "sha256": "aaa92eb36506309921d501b490ebb7cc53e299fb8d85682be902333e8c49f11d",
-      "bytes": 29385,
+      "sha256": "cc51d143ca508dc48e4615d87613ac44e5ac95b2af26ae366515f6004025af8d",
+      "bytes": 29927,
       "repository": "https://github.com/yissok/chatgpt-browser-bridge",
-      "revision": "72b250d4dee0501f1043fc369df2f41e367b6a83"
+      "revision": "a628e5a75362616cebe0780689a5a60c96f88375"
     }
   ]
 }
