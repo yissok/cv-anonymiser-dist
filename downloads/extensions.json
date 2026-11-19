@@ -10,6 +10,14 @@
       "bytes": 6184
     },
     {
+      "id": "cv-job-assistant",
+      "name": "CV Job Assistant (Beta)",
+      "version": "0.1.0",
+      "file": "cv-job-assistant.zip",
+      "sha256": "2276b9fd45514e569610d663eaa7cebeb6a8c2577a75269ca125b9d5b23fa9c2",
+      "bytes": 11753
+    },
+    {
       "id": "chatgpt-browser-bridge-firefox",
       "name": "ChatGPT Browser Bridge",
       "version": "0.1.3",
