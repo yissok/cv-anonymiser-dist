@@ -1,0 +1,27 @@
+{
+  "version": 4,
+  "assets": "https://yissok.github.io/cv-anonymiser-dist/releases/d36a47743176c3ba550d2bf723428419c806e447-45451246545-1",
+  "app": "cv-anonymiser",
+  "global": "__sveltekit_17wlusa",
+  "start": "_app/immutable/entry/start.Dqfnc9Xf.js",
+  "appEntry": "_app/immutable/entry/app.C1wFUr6j.js",
+  "styles": [],
+  "scripts": [],
+  "preloads": [
+    "https://yissok.github.io/cv-anonymiser-dist/releases/d36a47743176c3ba550d2bf723428419c806e447-45451246545-1/_app/immutable/entry/start.Dqfnc9Xf.js",
+    "https://yissok.github.io/cv-anonymiser-dist/releases/d36a47743176c3ba550d2bf723428419c806e447-45451246545-1/_app/immutable/chunks/bo_SGc5N.js",
+    "https://yissok.github.io/cv-anonymiser-dist/releases/d36a47743176c3ba550d2bf723428419c806e447-45451246545-1/_app/immutable/chunks/CLxJDVLH.js",
+    "https://yissok.github.io/cv-anonymiser-dist/releases/d36a47743176c3ba550d2bf723428419c806e447-45451246545-1/_app/immutable/chunks/aj9ZSFoa.js",
+    "https://yissok.github.io/cv-anonymiser-dist/releases/d36a47743176c3ba550d2bf723428419c806e447-45451246545-1/_app/immutable/entry/app.C1wFUr6j.js",
+    "https://yissok.github.io/cv-anonymiser-dist/releases/d36a47743176c3ba550d2bf723428419c806e447-45451246545-1/_app/immutable/chunks/CSk2yC3r.js",
+    "https://yissok.github.io/cv-anonymiser-dist/releases/d36a47743176c3ba550d2bf723428419c806e447-45451246545-1/_app/immutable/chunks/wLp_IFGU.js",
+    "https://yissok.github.io/cv-anonymiser-dist/releases/d36a47743176c3ba550d2bf723428419c806e447-45451246545-1/_app/immutable/chunks/Dc12ZpmG.js",
+    "https://yissok.github.io/cv-anonymiser-dist/releases/d36a47743176c3ba550d2bf723428419c806e447-45451246545-1/_app/immutable/chunks/CGJOkA2v.js",
+    "https://yissok.github.io/cv-anonymiser-dist/releases/d36a47743176c3ba550d2bf723428419c806e447-45451246545-1/_app/immutable/nodes/0.V_8D2NMx.js"
+  ],
+  "social": {
+    "title": "Cv Anonymiser",
+    "description": "An interactive website created with Project Factory."
+  },
+  "viewport": "width=device-width, initial-scale=1"
+}
