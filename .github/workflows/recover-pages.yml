@@ -1,0 +1,117 @@
+name: Recover Pages deployment
+
+on:
+  workflow_run:
+    workflows: [Publish Pages and notify Scout]
+    types: [completed]
+    branches: [main]
+
+permissions:
+  actions: write
+  contents: read
+  statuses: write
+
+concurrency:
+  group: pages-recovery-${{ github.event.workflow_run.id }}
+  cancel-in-progress: false
+
+jobs:
+  retry:
+    if: >-
+      github.event.workflow_run.conclusion == 'failure' &&
+      github.event.workflow_run.run_attempt == 1 &&
+      github.event.workflow_run.head_repository.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Retry a failed deployment of an uploaded artifact
+        uses: actions/github-script@v8
+        env:
+          GH_TOKEN: ${{ github.token }}
+        with:
+          script: |
+            const { execFileSync } = require('node:child_process');
+            const trigger = context.payload.workflow_run;
+            const repository = context.repo;
+            const run_id = trigger.id;
+            const sha = trigger.head_sha;
+            const runUrl = `https://github.com/${repository.owner}/${repository.repo}/actions/runs/${run_id}`;
+            const pause = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+            if (trigger.path !== '.github/workflows/publish-pages.yml' || trigger.head_branch !== 'main' ||
+                !['push', 'workflow_dispatch'].includes(trigger.event) || !/^[a-f0-9]{40}$/.test(sha)) return;
+
+            async function report(state, description) {
+              await github.rest.repos.createCommitStatus({ ...repository, sha, state, description,
+                context: 'switchboard/pages-recovery', target_url: runUrl });
+            }
+
+            async function current() {
+              const { data } = await github.rest.git.getRef({ ...repository, ref: 'heads/main' });
+              return data.object.sha === sha;
+            }
+
+            async function readRun() {
+              const { data } = await github.rest.actions.getWorkflowRun({ ...repository, run_id });
+              if (data.head_sha !== sha || data.head_branch !== 'main') throw new Error('The deployment run changed revision.');
+              return data;
+            }
+
+            async function pagesJob(attempt, conclusion) {
+              const { data: { jobs } } = await github.rest.actions.listJobsForWorkflowRunAttempt({ ...repository, run_id, attempt_number: attempt });
+              return jobs.find((job) => job.steps?.some((step) => step.name === 'Deploy GitHub Pages' && step.conclusion === conclusion));
+            }
+
+            async function failureReason(attempt) {
+              const job = await pagesJob(attempt, 'failure');
+              if (!job || !Number.isSafeInteger(job.id)) return null;
+              const { data: { artifacts } } = await github.rest.actions.listWorkflowRunArtifacts({ ...repository, run_id });
+              const archive = `github-pages-${run_id}-${attempt}`;
+              if (!artifacts.some((artifact) => !artifact.expired && artifact.size_in_bytes > 0 && artifact.name === archive)) return null;
+              const log = execFileSync('gh', ['run', 'view', String(run_id), '--repo', `${repository.owner}/${repository.repo}`,
+                '--attempt', String(attempt), '--job', String(job.id), '--log-failed'],
+                { encoding: 'utf8', timeout: 30000, maxBuffer: 2 * 1024 * 1024, stdio: ['ignore', 'pipe', 'pipe'] });
+              const deployLog = log.split('\n').filter((line) => line.includes('\tDeploy GitHub Pages\t')).join('\n');
+              if (deployLog.includes(`No artifacts named "${archive}"`)) return 'Pages could not find the uploaded artifact.';
+              if (/(?:HTTP(?: error)?|status code)\s*[:=]?\s*(?:429|502|503|504)\b/i.test(deployLog)) return 'GitHub Pages returned a temporary service error.';
+              return null;
+            }
+
+            if (!await current()) return;
+            try {
+              let run = await readRun();
+              while (run.status === 'completed' && run.conclusion === 'failure' && run.run_attempt < 3) {
+                const attempt = run.run_attempt;
+                const reason = await failureReason(attempt);
+                if (!reason) {
+                  await report('failure', 'Pages failed without a recognized transient error. See the failed step.');
+                  return;
+                }
+                await report('pending', `${reason} Scheduling retry ${attempt} of 2 for the same build.`);
+                await pause(attempt === 1 ? 20000 : 45000);
+                if (!await current()) {
+                  await report('error', 'A newer distribution commit superseded this deployment.');
+                  return;
+                }
+                run = await readRun();
+                if (run.run_attempt === attempt && run.status === 'completed' && run.conclusion === 'failure') {
+                  await github.rest.actions.reRunWorkflowFailedJobs({ ...repository, run_id });
+                }
+                for (let check = 0; check < 24; check++) {
+                  await pause(10000);
+                  run = await readRun();
+                  if (run.run_attempt > attempt && run.status === 'completed') break;
+                }
+                if (run.run_attempt <= attempt || run.status !== 'completed') {
+                  await report('error', 'Pages retry did not finish within the recovery window.');
+                  return;
+                }
+              }
+              if (!await current()) return;
+              if (run.conclusion === 'success' && await pagesJob(run.run_attempt, 'success')) {
+                await report('success', 'The Pages deployment succeeded on retry.');
+              } else if (run.conclusion === 'success') await report('error', 'The workflow finished, but the Pages deployment step was skipped.');
+              else await report('failure', 'Pages still failed after recovery. See the deployment run.');
+            } catch (error) {
+              await report('error', 'GitHub could not complete automatic Pages recovery.');
+              core.setFailed(error.message);
+            }

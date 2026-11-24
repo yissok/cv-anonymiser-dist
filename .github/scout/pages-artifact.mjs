@@ -1,4 +1,5 @@
 import { setTimeout as delay } from 'node:timers/promises';
+import { appendFile } from 'node:fs/promises';
 import { pathToFileURL } from 'node:url';
 
 const identifier = value => /^(?:[1-9]\d*)$/.test(String(value ?? '')) && String(value).length <= 20;
@@ -31,9 +32,8 @@ export function githubArtifactLister({ repository, runId, token, fetcher = fetch
   };
 }
 
-// This read-only gate tolerates delayed REST metadata after upload. The deploy
-// action uses another metadata service, so readiness here is useful evidence,
-// not a guarantee that every later GitHub service request will succeed.
+// Wait for the exact upload to be available through the REST API. Its verified
+// ID becomes the deployment input, so Pages never has to look up the name again.
 export async function waitForPagesArtifact({ listArtifacts, artifactName, artifactId, timeoutMs = 60000, intervalMs = 1000,
   now = Date.now, sleep = delay }) {
   if (typeof listArtifacts !== 'function' || !artifactNameValid(artifactName) || !identifier(artifactId)
@@ -79,6 +79,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) 
       listArtifacts: githubArtifactLister({ repository: process.env.GITHUB_REPOSITORY, runId: process.env.GITHUB_RUN_ID, token: process.env.GH_TOKEN }),
       artifactName: process.env.PAGES_ARTIFACT_NAME, artifactId: process.env.PAGES_ARTIFACT_ID
     });
+    if (process.env.GITHUB_OUTPUT) await appendFile(process.env.GITHUB_OUTPUT, `artifact_id=${result.id}\n`);
     console.log(`Pages artifact is ready after ${result.attempts} metadata check(s).`);
   } catch (error) {
     console.error(error instanceof ArtifactMetadataError ? error.message : 'Pages artifact readiness could not be verified.');

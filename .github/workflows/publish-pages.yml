@@ -49,6 +49,7 @@ jobs:
           name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
           path: .
       - name: Wait for uploaded artifact metadata
+        id: artifact
         if: steps.candidate.outputs.deploy == 'true'
         env:
           GH_TOKEN: ${{ github.token }}
@@ -58,9 +59,23 @@ jobs:
       - name: Deploy GitHub Pages
         if: steps.candidate.outputs.deploy == 'true'
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/github-script@v8
+        env:
+          PAGES_ARTIFACT_ID: ${{ steps.artifact.outputs.artifact_id }}
         with:
-          artifact_name: github-pages-${{ github.run_id }}-${{ github.run_attempt }}
+          script: |
+            const { pathToFileURL } = require('node:url');
+            const deploy = pathToFileURL(`${process.env.GITHUB_WORKSPACE}/.github/scout/pages-deploy.mjs`);
+            const { deployPages } = await import(deploy.href);
+            const url = await deployPages({
+              request: (route, params) => github.request(route, params),
+              getIdToken: () => core.getIDToken(),
+              repository: context.repo,
+              commit: context.sha,
+              artifactId: process.env.PAGES_ARTIFACT_ID,
+              log: (message) => core.info(message)
+            });
+            if (url) core.setOutput('page_url', url);
       - name: Verify the deployed release and notify Scout
         id: promotion
         if: steps.candidate.outputs.deploy == 'true'
@@ -73,10 +88,10 @@ jobs:
       - name: Keep the current and previous verified releases
         if: steps.promotion.outputs.cleanup == 'true'
         env:
-          SCOUT_REPO_PAT: ${{ secrets.SCOUT_REPO_PAT }}
+          GH_TOKEN: ${{ github.token }}
         run: |
-          # The PAT lets the cleanup commit trigger a Pages redeployment.
-          remote="https://x-access-token:${SCOUT_REPO_PAT}@github.com/${GITHUB_REPOSITORY}.git"
+          # A repository workflow token keeps cleanup from triggering another Pages run.
+          remote="https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           for attempt in 1 2 3; do
             checkout="$RUNNER_TEMP/cleanup-${attempt}"
             git clone --depth 1 --branch main "$remote" "$checkout"
